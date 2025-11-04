@@ -1,0 +1,7 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Card - {{ data['Name'] }}</title>
+<style>body{font-family:Arial;background:#eaf2fb;display:flex;align-items:center;justify-content:center;height:100vh;margin:0} .card{width:720px;background:#fff;border-radius:10px;box-shadow:0 8px 30px rgba(10,40,80,.12);overflow:hidden;border-top:6px solid #0b6fc1} .head{background:linear-gradient(90deg,#0b6fc1,#4da6e0);color:white;padding:18px} .head h2{margin:0} .body{display:flex;padding:18px;gap:20px} .left{width:60%} .row{display:flex;gap:10px;margin-bottom:8px} .label{width:200px;color:#375a80;font-weight:700} .value{color:#112;font-weight:600} .right{width:40%;text-align:center;padding-top:10px}.small{color:#556;font-size:13px}</style>
+</head><body><div class="card"><div class="head"><h2>Emergency Medical Card</h2><div class="small">Keep this information accessible</div></div><div class="body"><div class="left">
+{% for k in data.keys() %}
+  <div class="row"><div class="label">{{ k }}:</div><div class="value">{{ data[k] }}</div></div>
+{% endfor %}
+</div><div class="right"><img src="{{ url_for('qrcode_image', gp_no=data['GP_No']) }}" width="200" height="200" class="qr"><div class="small" style="margin-top:8px">Scan to view this card</div></div></div></div></body></html>
